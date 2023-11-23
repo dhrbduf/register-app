@@ -28,6 +28,17 @@ pipeline {
         stage("Test Application"){
                steps {
                      sh "mvn test"
+
+		   script { 
+		   sh "env" 
+		   sh "echo ${env.BUILD_ID}"
+			   
+		   def VERSION = readMavenPom().getVersion()
+		// sh "echo ${pom.artifactId}"
+		   sh "echo ${pom.version}"
+		   }
+		       
+		       
                }
        }
 
@@ -46,14 +57,6 @@ pipeline {
             	   script {
                	     	waitForQualityGate abortPipeline: false, credentialsId: 'jenkins-sonar-token'
                    }
-		   sh "env" 
-		   sh "echo ${env.BUILD_ID}"
-		   
-		   script { 
-		    def VERSION = readMavenPom().getVersion()
-		// sh "echo ${pom.artifactId}"
-		   sh "echo ${pom.version}"
-		   }
             }
 
         }
