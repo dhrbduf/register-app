@@ -28,22 +28,6 @@ pipeline {
         stage("Test Application"){
                steps {
                      sh "mvn test"
-
-		   script { 
-		   sh "env" 
-		   sh "echo ${env.BUILD_ID}"
-		   sh "echo $currentBuild.number"
-			   
-	        // def VERSION = readMavenPom().getVersion()
-		   def VERSION = sh(script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout', returnStdout: true)
-		// sh "echo ${pom.artifactId}"
-		   sh "echo $VERSION"
-
-		   def ARTIFACTID = sh(script: 'mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout', returnStdout: true)   
-		   sh "echo $ARTIFACTID"   
-		   }
-		       
-		       
                }
        }
 
@@ -65,6 +49,28 @@ pipeline {
             }
 
         }
-          
+
+	stage("Pom.xml INFO"){
+       	    steps {
+     
+		   script { 
+			   sh "env" 
+			   sh "echo ${env.BUILD_ID}"
+			   sh "echo $currentBuild.number"
+				   
+		        // def VERSION = readMavenPom().getVersion()
+			   def VERSION = sh(script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout', returnStdout: true)
+			   sh "echo $VERSION"
+	
+			   def ARTIFACTID = sh(script: 'mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout', returnStdout: true)   
+			   sh "echo $ARTIFACTID"   
+
+			   def GROUPID = sh(script: 'mvn help:evaluate -Dexpression=project.groupId -q -DforceStdout', returnStdout: true)
+			   sh "echo $GROUPID"  
+			   }
+            }
+
+        }
+	       
    }
 }
