@@ -34,8 +34,8 @@ pipeline {
 		   sh "echo ${env.BUILD_ID}"
 		   sh "echo $currentBuild.number"
 			   
-		   def VERSION = readMavenPom().getVersion()
-		//   def VERSION = sh(script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout', returnStdout: true)
+	        // def VERSION = readMavenPom().getVersion()
+		   def VERSION = sh(script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout', returnStdout: true)
 		// sh "echo ${pom.artifactId}"
 		   sh "echo $VERSION"
 		   }
