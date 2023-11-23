@@ -5,6 +5,11 @@ pipeline {
         maven 'Maven3'
     }
 
+    environment{         
+	 pom = pom.xml     
+    }
+
+	
     stages{
         stage("Cleanup Workspace"){
                 steps {
