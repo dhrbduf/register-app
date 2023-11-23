@@ -45,9 +45,10 @@ pipeline {
             	   script {
                	     	waitForQualityGate abortPipeline: false, credentialsId: 'jenkins-sonar-token'
                    }
+		   sh "env" 
 		   sh "echo ${env.BUILD_ID}"
-		   sh "echo ${pom.artifactId}"
-		//   sh "echo ${pom.version}"
+		// sh "echo ${pom.artifactId}"
+		   sh "echo ${pom.version}"
             }
 
         }
