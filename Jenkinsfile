@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment{
-        pom = pom.xml     
+        def pom = readMavenPom file: 'pom.xml'
     }
 	
     tools {
