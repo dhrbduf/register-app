@@ -38,6 +38,9 @@ pipeline {
 		   def VERSION = sh(script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout', returnStdout: true)
 		// sh "echo ${pom.artifactId}"
 		   sh "echo $VERSION"
+
+		   def ARTIFACTID = sh(script: 'mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout', returnStdout: true)   
+		   sh "echo $ARTIFACTID"   
 		   }
 		       
 		       
