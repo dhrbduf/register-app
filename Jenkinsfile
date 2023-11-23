@@ -44,7 +44,8 @@ pipeline {
        	    steps {
             	   script {
                	     	waitForQualityGate abortPipeline: false, credentialsId: 'jenkins-sonar-token'
-                   }	
+                   }
+		   sh "echo ${env.BUILD_ID}"
             }
 
         }
