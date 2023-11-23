@@ -49,9 +49,11 @@ pipeline {
 		   sh "env" 
 		   sh "echo ${env.BUILD_ID}"
 		   
+		   script { 
 		    def pom = readMavenPom file: 'pom.xml'
 		// sh "echo ${pom.artifactId}"
 		   sh "echo ${pom.version}"
+		   }
             }
 
         }
