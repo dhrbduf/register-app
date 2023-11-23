@@ -1,13 +1,16 @@
 pipeline {
     agent any
+
+    environment{
+        pom = pom.xml     
+    }
+	
     tools {
         jdk 'Java17'
         maven 'Maven3'
     }
 
-    environment{         
-	 pom = pom.xml     
-    }
+    
 
 	
     stages{
