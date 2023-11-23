@@ -1,17 +1,10 @@
 pipeline {
     agent any
-
-    environment{
-        def pom = readMavenPom file: 'pom.xml'
-    }
 	
     tools {
         jdk 'Java17'
         maven 'Maven3'
     }
-
-    
-
 	
     stages{
         stage("Cleanup Workspace"){
@@ -55,6 +48,8 @@ pipeline {
                    }
 		   sh "env" 
 		   sh "echo ${env.BUILD_ID}"
+		   
+		    def pom = readMavenPom file: 'pom.xml'
 		// sh "echo ${pom.artifactId}"
 		   sh "echo ${pom.version}"
             }
