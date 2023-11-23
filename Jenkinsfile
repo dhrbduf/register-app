@@ -47,7 +47,7 @@ pipeline {
                    }
 		   sh "echo ${env.BUILD_ID}"
 		   sh "echo ${pom.artifactId}"
-		   sh "echo ${pom.version}"
+		//   sh "echo ${pom.version}"
             }
 
         }
