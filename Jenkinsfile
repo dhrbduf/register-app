@@ -59,7 +59,7 @@ pipeline {
 
         }
 
-	stage("Pom.xml INFO"){
+	stage("Pom.xml Info"){
        	    steps {
      
 		   script { 
@@ -81,8 +81,17 @@ pipeline {
 
         }
 
-	    
-	    
-	       
-   }
+	stage("Build & Push Docker Iamge"){
+       	    steps {
+            	   script {
+               	     	docker.withRegistry('',DOCKER_PASS) {
+				docker_image = docker.build "${IMAGE_NAME}"
+                   	}
+
+
+			   
+            	   }
+
+            }       
+       }
 }
