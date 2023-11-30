@@ -51,14 +51,14 @@ pipeline {
                }
        }
 
-//	stage("Quality Gate"){
-//       	    steps {
-//            	   script {
-//               	     	waitForQualityGate abortPipeline: false, credentialsId: 'jenkins-sonar-token'
-//                   }
-//           }
-//
-//        }
+	stage("Quality Gate"){
+       	    steps {
+            	   script {
+               	     	waitForQualityGate abortPipeline: false, credentialsId: 'jenkins-sonar-token'
+                   }
+           }
+
+        }
 
 	stage("Pom.xml Info"){
        	    steps {
